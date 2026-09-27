@@ -7,6 +7,16 @@ description: Generate images, speech (TTS), or video with Alibaba Model Studio T
 
 Use when the user asks to generate an image, synthesize speech, or make a video through an Alibaba Model Studio Token Plan subscription (`sk-sp-` key; typically env `DASHSCOPE_API_KEY`).
 
+## Relationship to Harness benefits (NOT redundant)
+
+Alibaba also offers "Harness benefits" (https://docs.agent.bailian.aliyun.com/en/token-plan/token-plan-harness-benefits): AgentStudio tools (web search, image generation, TTS, ASR, code interpreter, ...) exposed as MCP services (`https://dashscope.aliyuncs.com/api/v1/mcps/<Tool>/mcp`), billed to a separate monthly free quota / post-paid discount via the standard Model Studio API key (`sk-`), managed with the Bailian CLI (`bl`).
+
+This skill is a DIFFERENT path and both coexist by design:
+- This skill: `sk-sp-` Token Plan key, DashScope-native generation endpoints, consumption charged to plan Credits. Works without any MCP/CLI setup. (Only path available to accounts without an `sk-` key or without Harness-enabled MCP services, e.g. intl subscriptions.)
+- Harness MCP: `sk-` Model Studio key, MCP protocol, free monthly quota first, then discounted post-paid; never touches plan Credits.
+
+Do not delete either in favor of the other; pick by which credential/quota the user wants to spend. `sk-sp-` keys are hard-rejected (401 InvalidApiKey) by the Harness MCP endpoints and vice versa the `sk-` key cannot call the token-plan model endpoints.
+
 ## Why a skill, not provider config
 
 - Coding-agent model-kind roles (`image`, `speech`, `dictation` in omp; equivalents elsewhere) select from fixed catalog kinds; custom provider configs contribute chat models only.
