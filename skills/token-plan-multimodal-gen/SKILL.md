@@ -16,6 +16,7 @@ This skill is a DIFFERENT path and both coexist by design:
 - Harness MCP: `sk-` Model Studio key, MCP protocol, free monthly quota first, then discounted post-paid; never touches plan Credits.
 
 Do not delete either in favor of the other; pick by which credential/quota the user wants to spend. `sk-sp-` keys are hard-rejected (401 InvalidApiKey) by the Harness MCP endpoints and vice versa the `sk-` key cannot call the token-plan model endpoints.
+- Console evidence (intl Pro subscription, read 2026-09-27 via CDP): the international console subscription page has tabs Model | TokenPlan | Documentation | CLI and sections Available Models + 模型工具 (model-native tools: web search, code interpreter, web scraping, image-to-image search, text-to-image search). There is NO "Harness benefits" tab, no MCP service list, and no Quick-connect buttons — the free-quota MCP Harness product is not offered on international subscriptions; `bl mcp list` returns 0 and the MCP endpoints 404. The model-native tools are invoked by qwen3.7/3.8 models inside chat and bill plan Credits.
 
 ## Why a skill, not provider config
 
