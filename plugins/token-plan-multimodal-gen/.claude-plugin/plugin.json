@@ -1,0 +1,7 @@
+{
+  "name": "token-plan-multimodal-gen",
+  "description": "Generate images, speech (TTS), and video through Alibaba Model Studio Token Plan via DashScope-native endpoints.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}

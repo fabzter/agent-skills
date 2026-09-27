@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "fabzter-agent-skills",
+  "description": "Agent-neutral skills shared across coding agents (omp, Claude Code, Codex, Devin, Hermes, OpenClaw, Qwen, Qoder)",
+  "owner": {
+    "name": "Fabrizio"
+  },
+  "plugins": [
+    {
+      "name": "token-plan-multimodal-gen",
+      "description": "Generate images, speech (TTS), and video through Alibaba Model Studio Token Plan via DashScope-native endpoints.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "productivity",
+      "source": "./plugins/token-plan-multimodal-gen"
+    }
+  ]
+}
