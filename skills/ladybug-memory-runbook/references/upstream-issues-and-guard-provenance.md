@@ -33,7 +33,7 @@ the GitHub notification mail carries the full symbolicated analysis inline. Rela
 | Remote | Repo | HEAD | Guard present? |
 | --- | --- | --- | --- |
 | `origin` | `Ladybug-Memory/hermes-memory-plugin` | `087d793` "Restructure repo layout to match templates" | ❌ **no** |
-| `fork` | `fabzter/hermes-memory-plugin` | `1d5b73b` "Restore fcntl.flock single-writer guard" | ✅ **yes** (pushed 2026-09-28) |
+| `fork` | `fabzter/hermes-memory-plugin` | `1894e73` "Restore fcntl.flock single-writer guard" | ✅ **yes** (pushed 2026-09-28; author amended to faboster@gmail.com) |
 
 **Upstream never took it.** `Ladybug-Memory/hermes-memory-plugin` **PR #3 — "Add cross-process
 single-writer flock guard around Ladybug DB open" — is CLOSED, not merged.** Read the closure
@@ -51,17 +51,20 @@ Restore:
 ```bash
 git -C ~/.hermes/plugins/ladybug pull fork main
 grep -c flock ~/.hermes/plugins/ladybug/__init__.py   # expect > 0
-git -C ~/.hermes/plugins/ladybug log --oneline -2      # expect 1d5b73b on top
+git -C ~/.hermes/plugins/ladybug log --oneline -2      # expect 1894e73 on top
 ```
 
-## Part 3 — This skill is local-only (provenance gap)
+## Part 3 — Provenance: now published in fabzter/agent-skills (was local-only)
 
-`hermes-ladybug-memory` exists in **no repo**. Verified 2026-09-28 by checking:
+This skill was local-only until 2026-09-28. Verified at the time by checking:
 all 15 `Ladybug-Memory` org repos · `adsharma/hermes-agent` branch `feature/ladybug-memory-plugin`
 (carries the *plugin* at `plugins/memory/ladybug/`, not the skill) · `NousResearch/hermes-agent`
 upstream · GitHub code search for distinctive phrases (`hermes-ladybug-memory`, `hermes-writer.lock`,
-"Ladybug is Hermes's graph-memory store") — all empty. `hermes skills list` reports source `local`.
+"Ladybug is Hermes's graph-memory store") — all empty.
 
-So an upgrade that rewrites `~/.hermes/skills/` loses this file with no trace, exactly as upgrades
-have already eaten the flock guard twice. Candidate for adoption into `fabzter/agent-skills`
-(see the `hermes-skill-repos` skill for the repo-first workflow).
+**Adopted 2026-09-28 into `fabzter/agent-skills`** as `skills/ladybug-memory-runbook/`
+(renamed from `hermes-ladybug-memory` — agent-neutral, any agent embedding LadybugMemory can use
+it). Installed on this host from the tap; the old local copy under
+`autonomous-ai-agents/hermes-ladybug-memory/` was moved aside. **Edits must go repo-first**:
+edit `~/src/agent-skills`, push, then `hermes skills install/update` — never edit only the
+installed copy. See the `hermes-skill-repos` skill for the workflow.
