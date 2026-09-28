@@ -1,5 +1,5 @@
 {
-  "name": "token-plan-multimodal-gen",
-  "description": "Generate images, speech (TTS), and video through Alibaba Model Studio Token Plan via DashScope-native endpoints.",
+  "name": "agent-skills",
+  "description": "Fabrizio's agent-neutral skill collection (Token Plan multimodal generation, live Chrome tab driving via omp relay).",
   "skills": ["skills"]
 }
