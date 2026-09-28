@@ -1,5 +1,7 @@
 {
   "name": "gog-oauth-refresh-token-expiry",
   "description": "Diagnose and fix gog CLI logins that expire every ~7 days (Google External+Testing 7-day refresh tokens); detect via refresh_token_expires_in, fix by publishing the OAuth app + force-consent re-auth.",
-  "author": "fabzter"
+  "author": {
+    "name": "Fabrizio"
+  }
 }
