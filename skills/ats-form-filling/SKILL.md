@@ -30,8 +30,12 @@ hub skill `chrome-relay-live-tab` — read it first. This skill covers the **for
 
 ## Data sources (read before filling)
 
-- **CV v3:** `~/Library/CloudStorage/GoogleDrive-faboster@gmail.com/My Drive/LifeStyle/cv/cv-internal-ats-v3.docx`
-  (`read_file` auto-extracts docx). Older versions (v2, ats, plain) sit beside it — use **v3** unless told otherwise.
+- **CV (current):** `~/Library/CloudStorage/GoogleDrive-faboster@gmail.com/My Drive/LifeStyle/cv/cv-internal-ats-v4.docx`
+  (`read_file` auto-extracts docx). **v4 = v3 + Azure edits** (Azure PaaS since 2012, CAF landing-zone
+  design areas, Terraform/Bicep as *used not expert*, K8s/Docker). Older versions (v3, v2, ats, plain)
+  sit beside it — **use v4** unless the target specifically needs the Azure-lean baseline (v3 was the
+  one submitted to LexisNexis/RELX). Never overstate Azure beyond
+  `02_areas/career/azure-landing-zone-research.md` §7/§10 — those are the red lines.
 - **Mapping + headline lessons:** vault `02_areas/career/workday-cv-mapping.md` — the 11 experience
   entries in order, degree mapping (UAM Ingeniería en Computación → "Bachelor of Engineering (BE)"),
   website URLs (LinkedIn URL needs percent-encoding: the `á` breaks plain-text fields).
