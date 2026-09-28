@@ -32,6 +32,15 @@
       },
       "category": "productivity",
       "source": "./plugins/ladybug-memory-runbook"
+    },
+    {
+      "name": "ats-form-filling",
+      "description": "Fill job application forms (Workday, Greenhouse) in the user's live logged-in Chrome tab via the CDP relay, sourced from the CV.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "career",
+      "source": "./plugins/ats-form-filling"
     }
   ]
 }
