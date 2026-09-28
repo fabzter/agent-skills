@@ -27,5 +27,23 @@ Agent-neutral skills shared across every coding agent on a machine: omp (oh-my-p
 
 - `token-plan-multimodal-gen` — image/TTS/video generation via Alibaba Model Studio Token Plan (DashScope-native endpoints; verified live on the Singapore subscription).
 - `chrome-relay-live-tab` — drive the user's live, logged-in Chrome tabs (read/navigate/click/type/scratch tabs) via the omp browser relay's raw CDP endpoint; verified operation catalog inside.
+- `ats-form-filling` — fill job-application forms (Workday, Greenhouse) in the live logged-in Chrome tab via the CDP relay, sourced from the CV; React-input patterns, spinbutton date fields, and the Skills-dictionary/stale-state pitfalls.
+- `ladybug-memory-runbook` — diagnose and repair Ladybug graph-memory failures ("database is not initialised", corrupt WAL, SIGBUS, FTS-index inconsistency, multi-process single-writer corruption).
 
 OpenClaw's `skills install git:` takes the repo-root `SKILL.md` (single skill). For additional skills, symlink them: `ln -s <clone>/skills/<name> ~/.openclaw/skills/<name>`.
+
+## omp via CLI (non-interactive, reproducible)
+
+The table above uses omp's in-session slash commands. The same installs work from a shell, which is easier to script and verify:
+
+```bash
+omp plugin marketplace update fabzter-agent-skills          # refresh the cached catalog after a push
+omp plugin install <skill>@fabzter-agent-skills --scope user # install
+omp plugin list                                              # confirm it shows (user) + enabled
+```
+
+**Refresh the marketplace before installing a newly-added skill** — omp caches the catalog
+(`~/.omp/plugins/cache/marketplaces/<mp>/marketplace.json`); a skill pushed after the last
+`marketplace add`/`update` will not appear until you update. The install materializes under
+`~/.omp/plugins/cache/plugins/<mp>___<skill>___<ver>/`, with `skills/<name>` symlinked into the
+cached marketplace clone — verify with `find -L` (the symlink, not the raw dir).
