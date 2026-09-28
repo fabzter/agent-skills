@@ -1,0 +1,7 @@
+{
+  "name": "chrome-relay-live-tab",
+  "description": "Drive the user's live, logged-in Chrome tabs through the omp browser relay's raw CDP endpoint.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}

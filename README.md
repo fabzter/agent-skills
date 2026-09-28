@@ -26,3 +26,6 @@ Agent-neutral skills shared across every coding agent on a machine: omp (oh-my-p
 ## Skills
 
 - `token-plan-multimodal-gen` — image/TTS/video generation via Alibaba Model Studio Token Plan (DashScope-native endpoints; verified live on the Singapore subscription).
+- `chrome-relay-live-tab` — drive the user's live, logged-in Chrome tabs (read/navigate/click/type/scratch tabs) via the omp browser relay's raw CDP endpoint; verified operation catalog inside.
+
+OpenClaw's `skills install git:` takes the repo-root `SKILL.md` (single skill). For additional skills, symlink them: `ln -s <clone>/skills/<name> ~/.openclaw/skills/<name>`.

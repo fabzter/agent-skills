@@ -14,6 +14,15 @@
       },
       "category": "productivity",
       "source": "./plugins/token-plan-multimodal-gen"
+    },
+    {
+      "name": "chrome-relay-live-tab",
+      "description": "Drive the user's live, logged-in Chrome tabs through the omp browser relay's raw CDP endpoint.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "productivity",
+      "source": "./plugins/chrome-relay-live-tab"
     }
   ]
 }
