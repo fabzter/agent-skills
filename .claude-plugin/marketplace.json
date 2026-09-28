@@ -23,6 +23,15 @@
       },
       "category": "productivity",
       "source": "./plugins/chrome-relay-live-tab"
+    },
+    {
+      "name": "ladybug-memory-runbook",
+      "description": "Diagnose and repair Ladybug graph-memory failures: 'database is not initialised', corrupt WAL, SIGBUS crashes, and multi-process single-writer corruption.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "productivity",
+      "source": "./plugins/ladybug-memory-runbook"
     }
   ]
 }

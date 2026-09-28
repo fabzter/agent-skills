@@ -1,5 +1,5 @@
 {
   "name": "agent-skills",
-  "description": "Fabrizio's agent-neutral skill collection (Token Plan multimodal generation, live Chrome tab driving via omp relay).",
+  "description": "Fabrizio's agent-neutral skill collection (Token Plan multimodal generation, live Chrome tab driving via omp relay, Ladybug memory repair runbook).",
   "skills": ["skills"]
 }
