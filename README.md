@@ -29,6 +29,7 @@ Agent-neutral skills shared across every coding agent on a machine: omp (oh-my-p
 - `chrome-relay-live-tab` — drive the user's live, logged-in Chrome tabs (read/navigate/click/type/scratch tabs) via the omp browser relay's raw CDP endpoint; verified operation catalog inside.
 - `ats-form-filling` — fill job-application forms (Workday, Greenhouse) in the live logged-in Chrome tab via the CDP relay, sourced from the CV; React-input patterns, spinbutton date fields, and the Skills-dictionary/stale-state pitfalls.
 - `ladybug-memory-runbook` — diagnose and repair Ladybug graph-memory failures ("database is not initialised", corrupt WAL, SIGBUS, FTS-index inconsistency, multi-process single-writer corruption).
+- `gog-oauth-refresh-token-expiry` — diagnose and fix gog CLI logins that die every ~7 days (Google External+Testing 7-day refresh tokens); detect via `refresh_token_expires_in` on the token endpoint, fix by completing OAuth branding + publishing the app to In production + a `--force-consent` re-auth.
 
 OpenClaw's `skills install git:` takes the repo-root `SKILL.md` (single skill). For additional skills, symlink them: `ln -s <clone>/skills/<name> ~/.openclaw/skills/<name>`.
 
