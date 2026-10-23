@@ -30,6 +30,7 @@ Agent-neutral skills shared across every coding agent on a machine: omp (oh-my-p
 - `ats-form-filling` — fill job-application forms (Workday, Greenhouse) in the live logged-in Chrome tab via the CDP relay, sourced from the CV; React-input patterns, spinbutton date fields, and the Skills-dictionary/stale-state pitfalls.
 - `ladybug-memory-runbook` — diagnose and repair Ladybug graph-memory failures ("database is not initialised", corrupt WAL, SIGBUS, FTS-index inconsistency, multi-process single-writer corruption).
 - `gog-oauth-refresh-token-expiry` — diagnose and fix gog CLI logins that die every ~7 days (Google External+Testing 7-day refresh tokens); detect via `refresh_token_expires_in` on the token endpoint, fix by completing OAuth branding + publishing the app to In production + a `--force-consent` re-auth.
+- `personal-vault-para` — organize a personal Obsidian vault with PARA, complete research/convention snapshots, private local overrides and a deterministic conflict-aware governance sync. Canonical documentation: [knowledge-base-conventions](https://github.com/fabzter/knowledge-base-conventions); the bundled references/scripts are exported from the commit recorded in `references/upstream-lock.json`, not maintained independently.
 
 OpenClaw's `skills install git:` takes the repo-root `SKILL.md` (single skill). For additional skills, symlink them: `ln -s <clone>/skills/<name> ~/.openclaw/skills/<name>`.
 

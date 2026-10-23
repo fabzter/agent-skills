@@ -46,6 +46,15 @@
       "name": "gog-oauth-refresh-token-expiry",
       "description": "Diagnose and fix gog CLI logins that expire every ~7 days (Google External+Testing 7-day refresh tokens); detect via refresh_token_expires_in, fix by publishing the OAuth app + force-consent re-auth.",
       "source": "./plugins/gog-oauth-refresh-token-expiry"
+    },
+    {
+      "name": "personal-vault-para",
+      "description": "Personal Obsidian PARA conventions, research snapshots and a deterministic conflict-aware governance sync.",
+      "author": {
+        "name": "fabzter"
+      },
+      "category": "productivity",
+      "source": "./plugins/personal-vault-para"
     }
   ]
 }

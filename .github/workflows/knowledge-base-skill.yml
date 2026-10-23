@@ -1,0 +1,29 @@
+name: Verify pinned knowledge-base skill
+
+on:
+  push:
+    paths:
+      - 'skills/personal-vault-para/**'
+      - '.github/workflows/knowledge-base-skill.yml'
+  pull_request:
+    paths:
+      - 'skills/personal-vault-para/**'
+      - '.github/workflows/knowledge-base-skill.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify bundle hashes against pinned canonical source
+        run: >-
+          python3 skills/personal-vault-para/scripts/verify_bundle.py verify
+          --bundle skills/personal-vault-para --remote
+      - name: Check exported sync syntax
+        run: python3 -m py_compile skills/personal-vault-para/scripts/sync_vault.py
