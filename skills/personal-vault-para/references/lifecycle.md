@@ -1,7 +1,7 @@
 ---
 type: system
 status: active
-version: 1.0.0
+version: 1.1.0
 managed: knowledge-base-conventions
 ---
 
@@ -79,6 +79,34 @@ An inactive project may still hold reference value. Archive is not a trash can. 
 PARA is about actionability, so material can move as its role changes. That is a classification decision, not a nightly housekeeping rule.
 
 If a Resource becomes central to active work, usually link it from the Project first. If a whole project ends, archive the project together rather than scattering its history. If a repeated placement question reveals ambiguity, improve the convention or navigation before attempting a bulk migration.
+
+## 8. Operate the augmentation layer together
+
+These support folders participate in one workflow; they are not independent systems to keep in sync by hand. See the folder-by-folder purpose, workflow and boundaries in [[00_meta/Knowledge Base Conventions]].
+
+### Example: a study session becomes usable knowledge
+
+```text
+Templates/Study Session.md
+  -> 00_inbox/study/<session>.md (status: raw)
+  -> 03_resources/learning/<Course>/<Course> - Index.md and useful concept notes
+  -> the processed capture is marked status: filed, with destination/source links
+```
+
+1. Use the established session template if helpful; capture one note per actual session, not a compulsory note per day. Keep concurrent courses separate with the `course` field. Preserve an optional proposed `route` rather than treating it as unquestionable authority.
+2. During an authorized debrief, read the relevant raw sessions and existing course index first. Separate what the source said, the learner's interpretation, open questions and the application to current work.
+3. Consolidate useful claims into the course index or focused notes. A general method belongs in Resources; enduring personal operating context may belong in an Area; a deliverable-specific application belongs in its Project. Link shared knowledge rather than making a separate copy per consumer.
+4. Read back and verify the durable update before changing the source's processing state. Only captures actually incorporated become `status: filed`; preserve the raw source and record its destination and filing date. A drained raw queue does not mean its source files must disappear.
+5. Link a relevant asset from the owning note. Connect a person only when relationship context is useful, not simply because a lecturer's name appears in the source.
+6. Refresh the course index and, if useful, the broader reading path in `06_maps/`. The course MOC (Map of Content) stays with the course; its reusable skeleton stays in `Templates/`.
+
+Neither this example nor a governance update initiates the debrief, creates empty course trees, moves source notes, or changes existing template/plugin configuration.
+
+### Example: an event feeds a project and a lasting relationship
+
+Keep the event's preparation, decisions and debrief under the actual Project/Area owner. Link an existing person record in `05_people/` and any preserved supporting asset; do not relocate the event into People or Attachments. Record current process state in its authoritative tracker. Extract a reusable lesson to the appropriate Area/Resource and link back to evidence. A handover points to these owners so the next session can resume without treating the handover as another tracker.
+
+When the project closes, its history can be archived with approval. The person's shared record and useful general knowledge can remain active, and maps should continue to lead to the right material. No automatic cross-folder cascade is implied.
 
 ## What not to automate
 

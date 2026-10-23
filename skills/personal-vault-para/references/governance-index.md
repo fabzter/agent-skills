@@ -1,7 +1,7 @@
 ---
 type: system
 status: active
-version: 1.0.0
+version: 1.1.0
 managed: knowledge-base-conventions
 ---
 
@@ -11,9 +11,9 @@ This folder explains how this knowledge base works. You should not need an agent
 
 ## Start here
 
-1. [[00_meta/Knowledge Base Conventions|Conventions]] — filing decisions, names, links, properties, ownership and privacy.
+1. [[00_meta/Knowledge Base Conventions|Conventions]] — filing decisions plus our augmentation layer: Inbox, Meta, People, Maps, Attachments, Templates and existing Tags boundaries; each has a purpose, workflow and limits.
 2. [[00_meta/Knowledge Base Research and Decisions|Research and decisions]] — source material, rationale and the distinction between evidence and local choices.
-3. [[00_meta/Knowledge Base Lifecycle|Lifecycle]] — capture, active work, reviews, knowledge extraction and archiving.
+3. [[00_meta/Knowledge Base Lifecycle|Lifecycle]] — capture, active work, reviews, knowledge extraction and archiving, including the study-session and event-to-project working loops.
 4. [[00_meta/Knowledge Base Sync|Sync and maintenance]] — canonical source, snapshots, update procedure and conflict recovery.
 5. [[00_meta/Knowledge Base Sync Status|Installed revision and sync status]] — generated locally; not part of the public source repository.
 6. [[00_meta/Local Vault Conventions|Local vault conventions]] — private account/scope settings and additional project-specific rules, if the vault owner creates this note. Never synchronized to the public repository.
@@ -33,6 +33,6 @@ One authoring source, several readable copies. Copies are useful; untraceable in
 
 ## What this system is
 
-PARA supplies the four filing categories: Projects, Areas, Resources and Archives. Inbox, Meta, People, Maps and Attachments are optional Obsidian implementation conveniences. There is no separate official "full PARA" folder tier to unlock.
+PARA supplies the four filing categories: Projects, Areas, Resources and Archives. Inbox, Meta, People, Maps, Attachments and the configured Templates folder form our support layer. An existing Tags tree does not introduce another content category. These are implementation choices; there is no separate official "full PARA" folder tier to unlock.
 
 The lifecycle makes the folders useful. It does not authorize an automatic reorganization of existing content.

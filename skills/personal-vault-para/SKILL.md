@@ -1,7 +1,7 @@
 ---
 name: personal-vault-para
 description: "Use when organizing a personal Obsidian vault with PARA."
-version: 2.0.0
+version: 2.1.0
 author: fabzter
 license: MIT
 metadata:
@@ -40,6 +40,20 @@ The vault contains the same shared documentation under `00_meta`, plus optional 
 6. Keep company/project ownership intact. For multi-company work, use a neutral staging parent and separate company children; durable company notes belong in their own project home. Shared reusable context belongs in its Area/Resource, not beneath another company.
 7. Use the official Obsidian CLI for supported note operations with an explicit vault and exact `.md` path. Read before modifying. Preserve content, frontmatter, source evidence, hand edits, stable IDs and existing naming conventions. Verify complete readback; independently verify disk bytes when accessible. Report verification limitations rather than claiming an unperformed check.
 8. Treat migrations, bulk renames, archiving, publication, messages and schedules as separately scoped side effects. A new convention is not blanket permission to move old notes.
+
+## Augmented practice
+
+Use the conventions reference's **Our augmentation layer** for each support folder's purpose, workflow and boundary. Inspect the current folder README, relevant templates and private local conventions before changing an established lane. Do not infer a routing policy or a plugin owner merely from an existing root name.
+
+- **Inbox:** capture and traceable routing, including established handover/study lanes. For the study workflow, consolidate and verify durable knowledge before changing the processed source from `raw` to `filed`; preserve its source/destination trail.
+- **Meta:** the system's operating manual, managed mirror boundaries and private local scope; not general domain content.
+- **People:** shared relationship entities across projects; event evidence and live process state stay with their actual owners.
+- **Maps:** curated reading paths, not duplicated content/status. Keep project/course indexes in their owner folders and link them from broader maps.
+- **Attachments:** linked assets and frozen exports; preserve originals and classify by purpose, not extension alone.
+- **Templates:** reusable skeletons at the configured `Templates/` path; completed notes go to their owner/capture lane. Template changes never rewrite existing notes implicitly.
+- **Tags:** ordinary labels use tags/properties. An existing `Tags/` tree is not a new filing category; identify its consumers before any authorized cleanup.
+
+Creating a convention or updating the governance mirror is not permission to drain Inbox, migrate notes, archive people, regenerate originals, change plugin configuration or delete empty-looking folders. The lifecycle reference gives the end-to-end study and event examples.
 
 ## PARA completeness
 

@@ -1,28 +1,28 @@
 {
-  "commit": "02921e1e546e5f74a443597a8f30599622395a4c",
+  "commit": "9336eedf7e3e04c979c5fce9ca3d18a58b45abd3",
   "files": {
     "SKILL.md": {
-      "sha256": "3ad4e9046db4edc7542c2e10f8037032664295544cbc855d28f56e66fc8fa8db",
+      "sha256": "6e2c932f73874bb3569a77da41516760df9a7923b5696fc8123068b95fb2fa2b",
       "source": "skill/SKILL.md"
     },
     "references/conventions.md": {
-      "sha256": "0528c2649f265308e4903ac217a76758332dc669e43c0581f00be16855e1360e",
+      "sha256": "e6015874d8c9f56c34db4bce37393ef481c086783e29db9e01147b1fd3ef026f",
       "source": "vault/00_meta/Knowledge Base Conventions.md"
     },
     "references/governance-index.md": {
-      "sha256": "9b993cf2971fce79e656c9507fc1edae211c953dada1f63c4076814576de7a7b",
+      "sha256": "c13f7eedb275a330b16250d760fb889f85290d9ef9880184c71b4dde47e3f37f",
       "source": "vault/00_meta/README.md"
     },
     "references/lifecycle.md": {
-      "sha256": "a524abd9dfb0fabb7bb6698218eee7dc6e9b1b58f16842954576454d85e90073",
+      "sha256": "2f652c70e70452dad1a4918b9ce4df609e45cefd87138a20838e762ec3c56b7e",
       "source": "vault/00_meta/Knowledge Base Lifecycle.md"
     },
     "references/para-research.md": {
-      "sha256": "43558c728e8963ff2cd62cf773c1b7dc997e7423da7e1b05d690587797aa3897",
+      "sha256": "61f7c02d19f05ef1bca496cc578df2326e3bdfb30c486a051bd94398dd802b31",
       "source": "vault/00_meta/Knowledge Base Research and Decisions.md"
     },
     "references/sync-protocol.md": {
-      "sha256": "430001aa97c0d87c2ab78515d66e4c2307b18325326aa38d6708388437a60e0e",
+      "sha256": "ca0d6b0022234bb1f0afd6525bb842af65248d2d32cf75a4e7b8fb21e1daedc9",
       "source": "vault/00_meta/Knowledge Base Sync.md"
     },
     "scripts/cron_entry.py": {

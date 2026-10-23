@@ -1,7 +1,7 @@
 ---
 type: system
 status: active
-version: 1.0.0
+version: 1.1.0
 research_origin: 2026-07-31
 reviewed: 2026-10-23
 managed: knowledge-base-conventions
@@ -94,7 +94,7 @@ Use Projects, Areas, Resources and Archives. Rejected for this implementation: c
 
 ### D2 — Support folders are implementation conveniences
 
-Inbox, Meta, People, Maps and Attachments make capture, self-documentation and retrieval practical. Numeric prefixes stabilize sidebar ordering. These are not additional official PARA categories.
+Inbox, Meta, People, Maps and Attachments make capture, self-documentation and retrieval practical. A configured Templates folder supports repeatable note creation. Numeric prefixes stabilize sidebar ordering where already used; they do not justify renaming a configured unprefixed folder. These are not additional official PARA categories.
 
 ### D3 — Completeness means lifecycle, not more folders
 
@@ -115,6 +115,20 @@ A deterministic exporter copies the complete declared bundle from one committed 
 The scheduled sync resolves one upstream commit, validates an allowlisted/hash-checked Markdown payload, then writes through the explicitly named native Obsidian CLI. It never runs freshly downloaded code, pushes vault changes, deletes notes or expands scope from a remote manifest.
 
 Local edits to managed notes are conflicts requiring review. Private local conventions remain unmanaged and never become public implicitly.
+
+### D7 — An explicit augmentation layer
+
+Document each adopted support folder's purpose, working loop and boundary rather than merely naming it in a tree. This is an implementation decision informed by the existing capture, study, relationship and navigation workflows, not a claim that external PARA research prescribes these roots.
+
+- Inbox is intake and continuity; processing is traceable and does not imply source deletion.
+- Meta contains the operating manual and private scope, not domain/project content.
+- People records persist across projects; a company/event still owns its own evidence and status.
+- Maps curate reading paths; owner-specific indexes remain with their owners and trackers remain authoritative.
+- Attachments hold assets/frozen exports; preserve existing originals and classify by purpose, not extension alone.
+- `Templates/` stays at its configured path; a reusable skeleton and a completed note have different homes.
+- An existing `Tags/` tree is not automatically a routing category or evidence of a particular plugin. Labels belong in meaningful tags/properties; investigate consumers before any cleanup.
+
+Use the lifecycle's capture-to-consolidation examples to explain how these choices work together. Adopting documentation does not authorize a content migration, index relocation, source purge, plugin reconfiguration or new schedule.
 
 ## Review triggers
 

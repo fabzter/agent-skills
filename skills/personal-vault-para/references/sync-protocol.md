@@ -1,7 +1,7 @@
 ---
 type: system
 status: active
-version: 1.0.0
+version: 1.1.0
 managed: knowledge-base-conventions
 ---
 
@@ -81,7 +81,7 @@ python3 tools/bundle.py verify --bundle /path/to/agent-skills/skills/personal-va
 6. Commit/push the generated skill bundle in `agent-skills`, then reinstall from that repository:
 
 ```bash
-hermes skills install fabzter/agent-skills/personal-vault-para --yes --force
+hermes skills install fabzter/agent-skills/skills/personal-vault-para --yes --force
 ```
 
 7. Verify installed content and provenance, not only the install command's return code. Re-run the sync to refresh the status's installed-snapshot revision when appropriate.

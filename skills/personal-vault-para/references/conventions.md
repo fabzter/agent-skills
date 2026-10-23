@@ -1,7 +1,7 @@
 ---
 type: system
 status: active
-version: 1.0.0
+version: 1.1.0
 managed: knowledge-base-conventions
 ---
 
@@ -20,28 +20,82 @@ Read [[00_meta/Local Vault Conventions]] when present. It identifies local scope
 | Home | Meaning | Typical content |
 | --- | --- | --- |
 | `00_inbox/` | Temporary, unclassified capture | Fleeting notes, raw imports, unprocessed source material |
-| `00_meta/` | Infrastructure for this vault | Conventions, research behind the system, maintenance, templates and private local settings |
+| `00_meta/` | Infrastructure for this vault | Conventions, research behind the system, maintenance, template guidance and private local settings |
 | `01_projects/` | An active effort with an observable outcome or endpoint | A job search, a specific application process, a renovation, a research deliverable |
 | `02_areas/` | An ongoing responsibility with a standard to maintain | Career development, health, home, finances, relationships |
 | `03_resources/` | General reference or an interest not currently owned by an active outcome | Technical concepts, methods, reading notes, course knowledge |
 | `04_archive/` | Inactive material from Projects, Areas or Resources | Finished or paused projects, retired responsibilities, inactive reference collections |
 | `05_people/` | Optional people-centered retrieval | Contact context and relationship notes linked to projects/areas |
 | `06_maps/` | Optional navigation | Maps of Content, indexes, dashboards and cross-domain reading paths |
-| `99_attachments/` | Binary assets | Images, PDFs, exports and documents linked from notes |
+| `99_attachments/` | Assets and preserved source exports | Images, PDFs, recordings and frozen exports linked from owning notes |
+| `Templates/` | Configured reusable note skeletons | Capture and course-index templates, not completed notes |
+| `Tags/` when already present | Existing compatibility surface, not a filing category | Preserve until its origin and consumers are understood; do not route new content here |
 
 The four PARA categories are Projects, Areas, Resources and Archives. The other folders and their numeric prefixes are local implementation choices, not additional PARA requirements. Do not create empty subfolder trees in anticipation of hypothetical work.
 
 ### Decision order
 
 1. Is the note about the knowledge system itself? Use `00_meta`.
-2. Is it a people record or a binary asset? Use the relevant optional retrieval/attachment home and link it to the actual project or area.
-3. Does an active outcome own this information? Use that project.
-4. Does maintaining an ongoing responsibility own it? Use that area.
-5. Is it general knowledge or reference? Use Resources.
-6. Has it become inactive? Archive it, subject to the owner's migration approval.
-7. Is its purpose still unclear? Capture it temporarily in Inbox.
+2. Is it a reusable note skeleton? Use the configured template folder, here `Templates/`.
+3. Is it primarily navigation? Keep an owner-specific index with that owner; use `06_maps/` for a cross-context entry point.
+4. Is it a person/relationship record or an imported asset? Use the relevant retrieval/attachment home and link it to the actual project or area. Merely mentioning a person does not make a project note a people record.
+5. Does an active outcome own this information? Use that project.
+6. Does maintaining an ongoing responsibility own it? Use that area.
+7. Is it general knowledge or reference? Use Resources.
+8. Has it become inactive? Archive it, subject to the owner's migration approval.
+9. Is its purpose still unclear? Capture it temporarily in Inbox.
 
 When both a Project and an Area are relevant, file with the active outcome and link from the Area. Reusable does not automatically mean Resources: personal career narratives and observed interview lessons can belong to the ongoing Career Area; a general interviewing method belongs in Resources.
+
+## Our augmentation layer
+
+PARA provides the actionability model. The folders below add capture, governance, entity retrieval, navigation and assets. These are this implementation's explicit working conventions, not additional official PARA categories. Inspect an existing folder's README and local conventions before changing its workflow. Do not create all of these roots in a different vault merely to match this example.
+
+### `00_inbox/` — Capture and routing
+
+- **Purpose:** Hold unprocessed captures and imports without requiring a filing decision during capture.
+- **Workflow:** Record enough source/date/context to recover meaning. During an explicitly requested debrief or review, identify the owning Project, Area, Resource or person record; consolidate useful knowledge there, verify it, and leave a traceable destination on the source. Use the owner directly when it is already clear. Keep established lanes such as study or document intake distinct.
+- **Boundary:** A raw source is not a finished lesson or a second task tracker. Processing a capture does not authorize deleting it. A handover may remain here as a continuity pointer under local convention; it points to authoritative notes rather than becoming another status authority. A useful queue matters more than a cosmetically empty folder.
+
+### `00_meta/` — The system's operating manual
+
+- **Purpose:** Explain the knowledge system itself: conventions, research/decisions, maintenance, automation health and local operating scope.
+- **Workflow:** Start at its README. Author shared rules in the canonical repository and mirror the approved files; keep private scope and domain exceptions in the unmanaged local-conventions note. Document where templates and automation live instead of silently relocating them.
+- **Boundary:** This is not a catch-all for domain knowledge, project delivery or exported credentials. Generated status describes its stated verification scope, not every automation's present health. Do not hand-edit managed mirrors or assume all files in Meta are sync-managed.
+
+### `05_people/` — Durable relationship context
+
+- **Purpose:** Give a person one discoverable entity home across projects, employers and events.
+- **Workflow:** Check identity and existing aliases before creating another record. Use a stable human-readable name, adding context only to distinguish collisions. Record relevant relationship/role context with dates and sources, and link the person from the projects, meetings and Areas where the relationship matters.
+- **Boundary:** Event evidence and company-process status remain with their Project/Area; link them rather than copying a whole dossier into the person note. A project closing does not end the relationship or authorize archiving the person. Store only necessary private details; never infer identity or personal facts from similar names.
+
+### `06_maps/` — Curated reading paths
+
+- **Purpose:** Provide Maps of Content (MOCs): human-readable entry points across several owners or topics.
+- **Workflow:** Link important starting notes with short descriptions and a useful reading order. Keep an individual project's or course's own index in its owner folder; link that index from a broader map when it improves discovery. Update the relevant path when adding durable knowledge, not every map in the vault.
+- **Boundary:** A map is navigation, not another copy of its linked material or another operational tracker. It need not list every file. Do not move all README/index/MOC notes into Maps or duplicate live status that already has an authoritative owner.
+
+### `99_attachments/` — Assets and frozen source material
+
+- **Purpose:** Keep reusable media, binary documents and preserved exports discoverable from their owning notes.
+- **Workflow:** Link each useful asset from its Project, Area or Resource and record origin/date where material. A shallow project grouping is reasonable when it prevents filename collisions. Keep the original distinguishable from an edited derivative; preserve the relevant revision and source link.
+- **Boundary:** Classify by purpose, not extension alone: a frozen export may be Markdown, while a new authored explanation belongs with its knowledge owner. Do not move existing binaries, working originals or externally authoritative documents just for uniformity. Do not delete an asset based only on a missing backlink; retention, privacy and link checks need their own approved scope.
+
+### `Templates/` — Reusable note shapes
+
+- **Purpose:** Supply the starting structure for a repeatable note type without storing the resulting work.
+- **Workflow:** Keep the actual folder path configured for the user's template tooling. Choose a template, instantiate a new note in its real owner/capture lane, and fill in the source and routing fields. Maintain common headings/metadata when a repeated workflow genuinely needs them; keep optional sections optional.
+- **Boundary:** Completed session notes and course indexes do not live here. Updating a template does not retroactively rewrite existing notes. Unprefixed naming is not a reason to rename this configured folder, move templates into Meta, change a plugin, or make the knowledge base depend on that plugin to be readable.
+
+### `Tags/` — An existing root is not a new category
+
+- **Purpose:** Preserve an already-existing Tags tree without treating its presence as a new knowledge-filing policy. Its origin or consumers may need separate investigation.
+- **Workflow:** For ordinary semantic labels, use a small frontmatter/inline tag vocabulary or meaningful properties, independent of folder location. If the existing Tags tree needs maintenance, first identify its actual files, references and any tooling dependency.
+- **Boundary:** Do not create one folder/note per tag, move content here because it has a label, or infer a plugin owner from the directory name. No indexed notes is not proof that deleting the tree is safe. Cleanup or migration requires an explicit preservation decision.
+
+App settings, caches and hidden tooling directories are configuration surfaces, not extra knowledge categories. Leave them alone unless changing that specific integration is part of the authorized task.
+
+The working loop is **capture -> consolidate under one PARA owner -> connect people/assets -> expose a useful reading path -> review or archive deliberately**. Templates shape capture; Meta explains the rules. See [[00_meta/Knowledge Base Lifecycle]] for the end-to-end examples.
 
 ## Project and company ownership
 
