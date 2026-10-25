@@ -135,51 +135,21 @@ sed -n '/p1_mode/p' build-macos/settings.toml     # must match
 Fix: checkout the overlay branch (`local/macos`), set `p1_mode`/`p2_mode` back to
 `analog` in `settings.toml`, rebuild, relaunch.
 
-## Packaging a double-clickable .app (and the two traps in it)
+## Packaging a double-clickable .app
 
-A bare Mach-O works, but a bundle is what makes the build feel like an app and —
-more importantly — gives the game its own TCC identity. Two independent lookups
-decide whether it renders correctly:
+Generic recipe (bundle layout, the two asset lookup roots, LaunchServices path
+resolution, TCC identity, signing limits): see the **`macos-sdl3-app-bundle`**
+skill. Only the psxrecomp-specific facts live here:
 
-| Component | Anchor |
-|---|---|
-| runtime (game config, disc, bios/, mods/, assets/, settings, saves) | the **executable's directory** → `Contents/MacOS/` |
-| launcher UI (pad art, fonts, flags) | `SDL_GetBasePath()`, which is **bundle-aware** and returns `Contents/Resources/` |
+- the runtime anchors every sidecar to the executable, so the payload goes in
+  `Contents/MacOS/` (`bios/`, `mods/`, `assets/`, `game*.toml`);
+- the recomp-ui launcher resolves art/fonts through `SDL_GetBasePath()`, i.e.
+  `Contents/Resources`, so add `Contents/Resources/assets -> ../MacOS/assets`;
+- do not copy `settings.toml`, `disc.cfg` or saves — a bundle should start clean.
 
-**Trap 1 — missing art/fonts.** Assets only in `Contents/MacOS` make the launcher
-fall back to a monospace font and draw **no controller artwork**, while the game
-itself still runs fine: it reads as a broken build, not a path problem. Fix: keep
-one payload and add `Contents/Resources/assets` → symlink to `../MacOS/assets`.
-
-**Trap 2 — LaunchServices path.** Finder/Spotlight/`open` can pass a **bare
-`argv[0]` with cwd `/`**, so `fs::absolute(argv[0])` anchors at the filesystem
-root and every sidecar lookup misses. Resolve via the OS instead:
-`_NSGetExecutablePath` + `weakly_canonical` on macOS, `readlink(/proc/self/exe)`
-on Linux (Windows already uses `GetModuleFileNameW`).
-
-**TCC identity.** A bare binary inherits Input Monitoring from the launching
-terminal (HID input *and* rumble output reports depend on it, per terminal,
-forever). A bundle is granted once for the game's `CFBundleIdentifier`.
-
-**Signing.** Sign the executable ad-hoc (`codesign --force --sign - <exe>`); the
-loader on Apple Silicon is satisfied. Sealing the *container* fails: codesign
-refuses the mod catalog's dotted package directories (`br2.enhancement.turbo`)
-as "bundle format unrecognized" sub-bundles. Report that in the packaging script
-instead of failing; distribution to another Mac needs Developer ID +
-notarisation, not a workaround.
-
-Minimal layout that satisfies everything:
-
-```
-Foo.app/Contents/MacOS/        exe + bios/ mods/ assets/ game*.toml
-Foo.app/Contents/Resources/    AppIcon.icns
-Foo.app/Contents/Resources/assets -> ../MacOS/assets
-Foo.app/Contents/Info.plist    CFBundleExecutable/Identifier/Name/Version,
-                               LSMinimumSystemVersion, NSHighResolutionCapable
-```
-
-Do **not** copy `settings.toml`, `disc.cfg` or saves into the bundle — it should
-start clean and write its own on first run.
+The overlay ships `scripts/macos/package-app.sh` (or `scripts/package_macos_app.sh`
+in the upstream-facing layout), which does all of the above and reports the
+ad-hoc signing outcome.
 
 ## Verification checklist
 

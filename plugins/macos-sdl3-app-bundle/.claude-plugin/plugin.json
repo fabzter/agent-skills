@@ -1,0 +1,7 @@
+{
+  "name": "macos-sdl3-app-bundle",
+  "description": "Package an SDL3 game or tool as a double-clickable macOS .app, or fix a bundle that lost its fonts/art/config: the two asset lookup roots (executable dir vs SDL_GetBasePath), LaunchServices argv/cwd behaviour, TCC identity for HID/Input Monitoring, and what codesign can and cannot seal.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}
