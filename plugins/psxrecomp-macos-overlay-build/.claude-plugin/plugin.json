@@ -1,0 +1,7 @@
+{
+  "name": "psxrecomp-macos-overlay-build",
+  "description": "Native macOS arm64 build overlay for psxrecomp game repos (BloodyRoar2Recomp-style): pull-friendly patch overlay, CMake-pinned dependency fetching, Homebrew-upgrade resilience, per-region targets and setup wizard configs, and the wizard toolchain-pack fix.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}

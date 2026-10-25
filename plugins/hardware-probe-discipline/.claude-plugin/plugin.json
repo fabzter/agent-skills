@@ -1,0 +1,7 @@
+{
+  "name": "hardware-probe-discipline",
+  "description": "Probing unknown hardware behaviour (HID reports, peripherals, protocols) with one variant at a time, guaranteed stops, and human confirmation.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}

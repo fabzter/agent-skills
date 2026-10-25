@@ -73,6 +73,24 @@
       },
       "category": "debugging",
       "source": "./plugins/psxrecomp-gamepad-rumble"
+    },
+    {
+      "name": "psxrecomp-macos-overlay-build",
+      "description": "Native macOS arm64 build overlay for psxrecomp game repos (BloodyRoar2Recomp-style): pull-friendly patch overlay, CMake-pinned dependency fetching, Homebrew-upgrade resilience, per-region targets and setup wizard configs, and the wizard toolchain-pack fix.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "debugging",
+      "source": "./plugins/psxrecomp-macos-overlay-build"
+    },
+    {
+      "name": "hardware-probe-discipline",
+      "description": "Probing unknown hardware behaviour (HID reports, peripherals, protocols) with one variant at a time, guaranteed stops, and human confirmation.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "debugging",
+      "source": "./plugins/hardware-probe-discipline"
     }
   ]
 }
