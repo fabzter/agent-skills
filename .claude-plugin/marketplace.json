@@ -55,6 +55,24 @@
       },
       "category": "productivity",
       "source": "./plugins/personal-vault-para"
+    },
+    {
+      "name": "macos-sdl3-gamepad-rumble",
+      "description": "Gamepad not detected or rumble silent/collapsing FPS on macOS in an SDL3 app: layer triage (OS HID, GameController, SDL, TCC Input Monitoring), the DS4 Bluetooth HID report convention SDL cannot express, stop-frame discipline, and moving synchronous HID writes off the frame loop.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "debugging",
+      "source": "./plugins/macos-sdl3-gamepad-rumble"
+    },
+    {
+      "name": "psxrecomp-gamepad-rumble",
+      "description": "Controllers or rumble broken in a psxrecomp game port (BloodyRoar2Recomp, MGS recomp family): SIO trace, digital-vs-DualShock config gate, forwarder hold/stop policy, per-region setup wizard configs, and the submodule patch workflow.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "debugging",
+      "source": "./plugins/psxrecomp-gamepad-rumble"
     }
   ]
 }

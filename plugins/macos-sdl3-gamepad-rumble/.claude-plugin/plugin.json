@@ -1,0 +1,7 @@
+{
+  "name": "macos-sdl3-gamepad-rumble",
+  "description": "Gamepad not detected or rumble silent/collapsing FPS on macOS in an SDL3 app: layer triage (OS HID, GameController, SDL, TCC Input Monitoring), the DS4 Bluetooth HID report convention SDL cannot express, stop-frame discipline, and moving synchronous HID writes off the frame loop.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}

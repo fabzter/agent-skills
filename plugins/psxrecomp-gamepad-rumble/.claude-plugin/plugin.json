@@ -1,0 +1,7 @@
+{
+  "name": "psxrecomp-gamepad-rumble",
+  "description": "Controllers or rumble broken in a psxrecomp game port (BloodyRoar2Recomp, MGS recomp family): SIO trace, digital-vs-DualShock config gate, forwarder hold/stop policy, per-region setup wizard configs, and the submodule patch workflow.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}
