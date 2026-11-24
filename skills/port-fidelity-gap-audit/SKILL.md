@@ -15,25 +15,28 @@ texture double-flip; static-batch world-space verts; UI reference-resolution sca
 ## Method
 1. Capture the ORIGINAL and the PORT at the SAME state/camera (title, first exterior, interior,
    each post-fx mode, a transition). Use the original build or a reference capture.
-2. Compare side-by-side (delegate pixel/feature comparison to a worker agent if available).
+2. Compare side-by-side AND quantitatively (foliage/grass mean/std/percentiles/channel histograms vs
+   the original capture); delegate pixel/feature comparison to a worker agent if available.
 3. Enumerate EVERY delta by category below; fix shim/shaders/asset-encoding (keep game code verbatim).
 4. Re-capture and re-compare until they match. Only then declare done.
 
 ## Gap checklist
 - **Default post-processing**: original may enable effects (Kuwahara/oil-paint, bloom, vignette, DoG)
   BY DEFAULT. A raw port looks flat. Match the default stack + order + parameters.
-- **Lighting**: ambient, fog, lightmap intensity/color, directional vs color-only lightmaps, skybox.
+- **Lighting**: ambient (SH probe), fog, lightmap intensity/color, directional vs color-only lightmaps,
+  skybox, Unity PBS indirect specular (SH9). **Lightmap RESOLUTION**: native 1024² keeps low-poly
+  facets crisp; downscaling (256²) blurs facets via bilinear bleed — keep native res for fidelity.
 - **Textures**: color space (sRGB/linear), compression vibrancy, palette/tiny textures (e.g. 8×8),
-  flip (UnityPy PRE-FLIPS — don't double-flip), mipmaps, wrap/filter modes.
+  flip (UnityPy PRE-FLIPS — don't double-flip), mipmaps, wrap/filter modes (point/nearest for palette).
 - **Shaders**: custom vs standard (e.g. Ciconia double-sided), cutout/transparent, normal mapping.
 - **Geometry**: static batching (baked world-space verts → model=identity, draw submesh range),
-  normals/tangents, scale, winding.
+  normals/tangents, scale, winding. **Low-poly facet clarity**: keep FLAT/per-face normals (hardware
+  `[[flat]]` in MSL; don't average/smooth on extraction) so faceted foliage reads as low-poly.
 - **UI**: canvas scaler mode + reference resolution + match, font atlas, alignment, text layout.
 - **Audio**: clip set, volumes, spatialization, looping, mixing.
-- **Geometry**: static batching (baked world-space verts → model=identity, draw submesh range),
-  normals/tangents, scale, winding. **Low-poly facet clarity**: keep FLAT/per-face normals (don't
-  average/smooth on extraction) so faceted foliage reads as low-poly; smooth normals make it look
-  blobby. Pair with crisp (point/nearest, no over-blur mipmaps) filtering for tiny palette textures.
+- **Input/physics**: trigger/raycast behavior, movement/look feel, cursor lock, gravity/jump.
+- **Scene flow**: load order, transitions, fades, timing, lifecycle order
+  (Awake/Start/OnEnable/Update/FixedUpdate/LateUpdate).
 - **Platform/launch**: Mac MainMenu.nib + NSPrincipalClass=PlayerApplication + NSMainNibFile; mono
   runtime layout per platform; codesign; graphics-API declaration (globalgamemanagers).
 

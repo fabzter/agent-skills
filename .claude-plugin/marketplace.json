@@ -145,6 +145,15 @@
    },
    "category": "debugging",
    "source": "./plugins/port-fidelity-gap-audit"
+  },
+  {
+   "name": "unity-free-sdl3-rebuild",
+   "description": "\"Use when removing the Unity engine entirely and running a decompiled Unity Mono game's verbatim C# on a lightweight backend with a much smaller build. Proven on The House On Ash Tree Lane (Unity 2021.1): SDL3 SDL_GPU native Metal + clean-room UnityEngine shim, 855MB\u2192116MB.\"",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/unity-free-sdl3-rebuild"
   }
  ]
 }
