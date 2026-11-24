@@ -91,8 +91,18 @@ archive "Support for Editor" modules (no editor install). Changeset comes from `
 - **Gate per platform** = Player.log `Initialize engine version` + `MonoManager ReloadAssembly ...
   Completed reload`. Mac/Linux verify headless via `-batchmode -nographics` (Null device shader
   errors are expected). Linux runs in an x86_64 glibc container (ubuntu, NOT alpine/musl).
-- **Environmental, NOT build defects**: (1) Unity 2021.1 Mac player's Cocoa
-  `applicationDidFinishLaunching` never fires on **macOS 27** — the BARE template stalls identically
-  (idle `NSApplicationMain`, diagnose with `sample`); batchmode inits fine, windowed works on macOS ≤12.
-  (2) Linux under **qemu** amd64-on-arm64 hits a Mono JIT `tramp-amd64.c` assert after reload; runs on
+- **Mac windowed launch fix (verified 2026-11-24)**: a hand-assembled Mac app stalls windowed
+  (idle `NSApplicationMain`, no log/window) if it lacks Unity's `MainMenu.nib` and the right
+  principal class. FIX: copy `MainMenu.nib` (+PlayerIcon.icns) from the module's
+  `Source/Player/MacPlayer/MacPlayerEntryPoint/Resources/` into `Contents/Resources/`, and use
+  Unity's Info.plist template keys: `NSPrincipalClass=PlayerApplication` (NOT plain NSApplication)
+  + `NSMainNibFile=MainMenu`. The nib wires up PlayerAppDelegate; without it the delegate never
+  fires. (Supersedes an earlier misdiagnosis that blamed macOS 27 — the nib/principal-class fix
+  launches windowed fine on Tahoe.)
+- **Rendering caveat**: Windows assets carry D3D11-only shader variants. Mac Metal / Linux GL init
+  fails (`InitializeEngineGraphics failed` / Null device) until the game's shaders get target-API
+  variants. The Mac player's BUILT-IN shaders are Metal, but the game's custom shaders are not.
+  Cross-compilation (1239 DXBC variants; DXBC→SPIR-V→Metal + Unity blob repack) is a deferred TODO;
+  a one-time editor bake per target is the reliable alternative. Windows via CrossOver renders now.
+- **Linux under qemu** amd64-on-arm64 hits a Mono JIT `tramp-amd64.c` assert after reload; runs on
   real x86_64 hardware.
