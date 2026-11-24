@@ -136,6 +136,15 @@
    },
    "category": "debugging",
    "source": "./plugins/unity-no-editor-metal-shader-port"
+  },
+  {
+   "name": "port-fidelity-gap-audit",
+   "description": "Use when a ported / recompiled / reverse-engineered build \"works\" (boots, runs, renders) but may not MATCH the original \u2014 systematically audit visual, audio, behavioral and platform fidelity gaps (default post-fx, lighting/lightmaps, texture encoding/color-space, palette textures, shaders, static batching, UI scaling, fonts, physics feel, scene flow) by side-by-side comparison against the original before declaring done.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/port-fidelity-gap-audit"
   }
  ]
 }
