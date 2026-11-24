@@ -100,6 +100,15 @@
       },
       "category": "debugging",
       "source": "./plugins/macos-sdl3-app-bundle"
+    },
+    {
+      "name": "itch-io-download",
+      "description": "Download free or owned itch.io uploads via curl: the file endpoint yields the real signed CDN URL, not the download_url HTML interstitial.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "productivity",
+      "source": "./plugins/itch-io-download"
     }
   ]
 }

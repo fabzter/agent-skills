@@ -1,0 +1,7 @@
+{
+  "name": "itch-io-download",
+  "description": "Download free or owned itch.io uploads via curl: the file endpoint yields the real signed CDN URL, not the download_url HTML interstitial.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}
