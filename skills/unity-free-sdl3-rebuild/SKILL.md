@@ -71,3 +71,11 @@ do long asset-analysis before writing files — don't assume stalled; check pane
   the UI quad/FontAtlas pipeline; navigate keyboard/gamepad/mouse.
 - Verify with a SDL virtual gamepad (`--test-gamepad`): assert left stick feeds GetAxis, right stick
   rotates yaw, buttons map, Start pauses, raw-joystick fallback works.
+- **Audio teardown SIGSEGV (double-click launch)**: `SDL_DestroyAudioStream` on a freed device crashes
+  (pthread_mutex_lock) when the app is launched via LaunchServices. Guard `Dispose` with
+  `SDL_WasInit(SDL_INIT_AUDIO)`, pause the stream before destroying, null the pointer, and dispose
+  audio BEFORE input/renderer/`SDL_Quit`. Terminal runs may hide it; test Finder double-click.
+- **Left stick: virtual test can pass while the REAL pad fails.** BT PS4 (Apple MFi) needs the app
+  FOREGROUND for HID reports; poll `SDL_GetGamepadAxis` AND add a raw `SDL_GetJoystickAxis` fallback
+  for the device. Always verify with the PHYSICAL pad (move left stick → player moves), not just
+  `--test-gamepad`.
