@@ -99,10 +99,10 @@ archive "Support for Editor" modules (no editor install). Changeset comes from `
   + `NSMainNibFile=MainMenu`. The nib wires up PlayerAppDelegate; without it the delegate never
   fires. (Supersedes an earlier misdiagnosis that blamed macOS 27 — the nib/principal-class fix
   launches windowed fine on Tahoe.)
-- **Rendering caveat**: Windows assets carry D3D11-only shader variants. Mac Metal / Linux GL init
-  fails (`InitializeEngineGraphics failed` / Null device) until the game's shaders get target-API
-  variants. The Mac player's BUILT-IN shaders are Metal, but the game's custom shaders are not.
-  Cross-compilation (1239 DXBC variants; DXBC→SPIR-V→Metal + Unity blob repack) is a deferred TODO;
-  a one-time editor bake per target is the reliable alternative. Windows via CrossOver renders now.
+- **Rendering (SOLVED 2026-11-24)**: Windows assets carry D3D11-only shaders, so Mac picks
+  NullGfxDevice and crashes on first draw. The no-editor native Metal port is PROVEN — see the
+  companion skill `unity-no-editor-metal-shader-port` (Unity HLSLcc DXBC→MSL + stripped-RDEF
+  synthesis + Unity-version Metal-blob repack + surgical globalgamemanagers patch). Converted
+  54 shaders / 1580 entries for 2021.1.11f1; renders natively on Apple M2 Pro.
 - **Linux under qemu** amd64-on-arm64 hits a Mono JIT `tramp-amd64.c` assert after reload; runs on
   real x86_64 hardware.

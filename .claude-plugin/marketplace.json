@@ -1,132 +1,141 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "fabzter-agent-skills",
-  "description": "Agent-neutral skills shared across coding agents (omp, Claude Code, Codex, Devin, Hermes, OpenClaw, Qwen, Qoder)",
-  "owner": {
+ "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+ "name": "fabzter-agent-skills",
+ "description": "Agent-neutral skills shared across coding agents (omp, Claude Code, Codex, Devin, Hermes, OpenClaw, Qwen, Qoder)",
+ "owner": {
+  "name": "Fabrizio"
+ },
+ "plugins": [
+  {
+   "name": "token-plan-multimodal-gen",
+   "description": "Generate images, speech (TTS), and video through Alibaba Model Studio Token Plan via DashScope-native endpoints.",
+   "author": {
     "name": "Fabrizio"
+   },
+   "category": "productivity",
+   "source": "./plugins/token-plan-multimodal-gen"
   },
-  "plugins": [
-    {
-      "name": "token-plan-multimodal-gen",
-      "description": "Generate images, speech (TTS), and video through Alibaba Model Studio Token Plan via DashScope-native endpoints.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "productivity",
-      "source": "./plugins/token-plan-multimodal-gen"
-    },
-    {
-      "name": "chrome-relay-live-tab",
-      "description": "Drive the user's live, logged-in Chrome tabs through the omp browser relay's raw CDP endpoint.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "productivity",
-      "source": "./plugins/chrome-relay-live-tab"
-    },
-    {
-      "name": "ladybug-memory-runbook",
-      "description": "Diagnose and repair Ladybug graph-memory failures: 'database is not initialised', corrupt WAL, SIGBUS crashes, and multi-process single-writer corruption.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "productivity",
-      "source": "./plugins/ladybug-memory-runbook"
-    },
-    {
-      "name": "ats-form-filling",
-      "description": "Fill job application forms (Workday, Greenhouse) in the user's live logged-in Chrome tab via the CDP relay, sourced from the CV.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "career",
-      "source": "./plugins/ats-form-filling"
-    },
-    {
-      "name": "gog-oauth-refresh-token-expiry",
-      "description": "Diagnose and fix gog CLI logins that expire every ~7 days (Google External+Testing 7-day refresh tokens); detect via refresh_token_expires_in, fix by publishing the OAuth app + force-consent re-auth.",
-      "source": "./plugins/gog-oauth-refresh-token-expiry"
-    },
-    {
-      "name": "personal-vault-para",
-      "description": "Personal Obsidian PARA conventions, research snapshots and a deterministic conflict-aware governance sync.",
-      "author": {
-        "name": "fabzter"
-      },
-      "category": "productivity",
-      "source": "./plugins/personal-vault-para"
-    },
-    {
-      "name": "macos-sdl3-gamepad-rumble",
-      "description": "Gamepad not detected or rumble silent/collapsing FPS on macOS in an SDL3 app: layer triage (OS HID, GameController, SDL, TCC Input Monitoring), the DS4 Bluetooth HID report convention SDL cannot express, stop-frame discipline, and moving synchronous HID writes off the frame loop.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "debugging",
-      "source": "./plugins/macos-sdl3-gamepad-rumble"
-    },
-    {
-      "name": "psxrecomp-gamepad-rumble",
-      "description": "Controllers or rumble broken in a psxrecomp game port (BloodyRoar2Recomp, MGS recomp family): SIO trace, digital-vs-DualShock config gate, forwarder hold/stop policy, per-region setup wizard configs, and the submodule patch workflow.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "debugging",
-      "source": "./plugins/psxrecomp-gamepad-rumble"
-    },
-    {
-      "name": "psxrecomp-macos-overlay-build",
-      "description": "Native macOS arm64 build overlay for psxrecomp game repos (BloodyRoar2Recomp-style): pull-friendly patch overlay, CMake-pinned dependency fetching, Homebrew-upgrade resilience, per-region targets and setup wizard configs, and the wizard toolchain-pack fix.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "debugging",
-      "source": "./plugins/psxrecomp-macos-overlay-build"
-    },
-    {
-      "name": "hardware-probe-discipline",
-      "description": "Probing unknown hardware behaviour (HID reports, peripherals, protocols) with one variant at a time, guaranteed stops, and human confirmation.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "debugging",
-      "source": "./plugins/hardware-probe-discipline"
-    },
-    {
-      "name": "macos-sdl3-app-bundle",
-      "description": "Package an SDL3 game or tool as a double-clickable macOS .app, or fix a bundle that lost its fonts/art/config: the two asset lookup roots (executable dir vs SDL_GetBasePath), LaunchServices argv/cwd behaviour, TCC identity for HID/Input Monitoring, and what codesign can and cannot seal.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "debugging",
-      "source": "./plugins/macos-sdl3-app-bundle"
-    },
-    {
-      "name": "itch-io-download",
-      "description": "Download free or owned itch.io uploads via curl: the file endpoint yields the real signed CDN URL, not the download_url HTML interstitial.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "productivity",
-      "source": "./plugins/itch-io-download"
-    },
-    {
-      "name": "unity-mono-lib-only-recomp",
-      "description": "Decompile and recompile a Unity Mono game's Assembly-CSharp.dll against the shipped managed libraries into a functionally identical program, no Unity editor; includes macOS CrossOver launch verification.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "debugging",
-      "source": "./plugins/unity-mono-lib-only-recomp"
-    },
-    {
-      "name": "omp-harness-api-gotchas",
-      "description": "Verified OMP/bash API semantics that cause failed tool calls: task tools field expects eval tools, commit namespace is cwd-bound, bash UID is readonly.",
-      "author": {
-        "name": "Fabrizio"
-      },
-      "category": "debugging",
-      "source": "./plugins/omp-harness-api-gotchas"
-    }
-  ]
+  {
+   "name": "chrome-relay-live-tab",
+   "description": "Drive the user's live, logged-in Chrome tabs through the omp browser relay's raw CDP endpoint.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "productivity",
+   "source": "./plugins/chrome-relay-live-tab"
+  },
+  {
+   "name": "ladybug-memory-runbook",
+   "description": "Diagnose and repair Ladybug graph-memory failures: 'database is not initialised', corrupt WAL, SIGBUS crashes, and multi-process single-writer corruption.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "productivity",
+   "source": "./plugins/ladybug-memory-runbook"
+  },
+  {
+   "name": "ats-form-filling",
+   "description": "Fill job application forms (Workday, Greenhouse) in the user's live logged-in Chrome tab via the CDP relay, sourced from the CV.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "career",
+   "source": "./plugins/ats-form-filling"
+  },
+  {
+   "name": "gog-oauth-refresh-token-expiry",
+   "description": "Diagnose and fix gog CLI logins that expire every ~7 days (Google External+Testing 7-day refresh tokens); detect via refresh_token_expires_in, fix by publishing the OAuth app + force-consent re-auth.",
+   "source": "./plugins/gog-oauth-refresh-token-expiry"
+  },
+  {
+   "name": "personal-vault-para",
+   "description": "Personal Obsidian PARA conventions, research snapshots and a deterministic conflict-aware governance sync.",
+   "author": {
+    "name": "fabzter"
+   },
+   "category": "productivity",
+   "source": "./plugins/personal-vault-para"
+  },
+  {
+   "name": "macos-sdl3-gamepad-rumble",
+   "description": "Gamepad not detected or rumble silent/collapsing FPS on macOS in an SDL3 app: layer triage (OS HID, GameController, SDL, TCC Input Monitoring), the DS4 Bluetooth HID report convention SDL cannot express, stop-frame discipline, and moving synchronous HID writes off the frame loop.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/macos-sdl3-gamepad-rumble"
+  },
+  {
+   "name": "psxrecomp-gamepad-rumble",
+   "description": "Controllers or rumble broken in a psxrecomp game port (BloodyRoar2Recomp, MGS recomp family): SIO trace, digital-vs-DualShock config gate, forwarder hold/stop policy, per-region setup wizard configs, and the submodule patch workflow.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/psxrecomp-gamepad-rumble"
+  },
+  {
+   "name": "psxrecomp-macos-overlay-build",
+   "description": "Native macOS arm64 build overlay for psxrecomp game repos (BloodyRoar2Recomp-style): pull-friendly patch overlay, CMake-pinned dependency fetching, Homebrew-upgrade resilience, per-region targets and setup wizard configs, and the wizard toolchain-pack fix.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/psxrecomp-macos-overlay-build"
+  },
+  {
+   "name": "hardware-probe-discipline",
+   "description": "Probing unknown hardware behaviour (HID reports, peripherals, protocols) with one variant at a time, guaranteed stops, and human confirmation.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/hardware-probe-discipline"
+  },
+  {
+   "name": "macos-sdl3-app-bundle",
+   "description": "Package an SDL3 game or tool as a double-clickable macOS .app, or fix a bundle that lost its fonts/art/config: the two asset lookup roots (executable dir vs SDL_GetBasePath), LaunchServices argv/cwd behaviour, TCC identity for HID/Input Monitoring, and what codesign can and cannot seal.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/macos-sdl3-app-bundle"
+  },
+  {
+   "name": "itch-io-download",
+   "description": "Download free or owned itch.io uploads via curl: the file endpoint yields the real signed CDN URL, not the download_url HTML interstitial.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "productivity",
+   "source": "./plugins/itch-io-download"
+  },
+  {
+   "name": "unity-mono-lib-only-recomp",
+   "description": "Decompile and recompile a Unity Mono game's Assembly-CSharp.dll against the shipped managed libraries into a functionally identical program, no Unity editor; includes macOS CrossOver launch verification.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/unity-mono-lib-only-recomp"
+  },
+  {
+   "name": "omp-harness-api-gotchas",
+   "description": "Verified OMP/bash API semantics that cause failed tool calls: task tools field expects eval tools, commit namespace is cwd-bound, bash UID is readonly.",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/omp-harness-api-gotchas"
+  },
+  {
+   "name": "unity-no-editor-metal-shader-port",
+   "description": "Use when a Unity WINDOWS Mono game must render natively on macOS Metal (or Linux GL) WITHOUT the Unity editor \u2014 i.e. the player launches but falls back to NullGfxDevice / crashes because assets carry D3D11-only shaders. Proven on The House On Ash Tree Lane (Unity 2021.1.11f1).",
+   "author": {
+    "name": "Fabrizio"
+   },
+   "category": "debugging",
+   "source": "./plugins/unity-no-editor-metal-shader-port"
+  }
+ ]
 }

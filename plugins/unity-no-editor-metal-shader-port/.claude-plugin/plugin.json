@@ -1,0 +1,7 @@
+{
+ "name": "unity-no-editor-metal-shader-port",
+ "description": "Use when a Unity WINDOWS Mono game must render natively on macOS Metal (or Linux GL) WITHOUT the Unity editor \u2014 i.e. the player launches but falls back to NullGfxDevice / crashes because assets carry D3D11-only shaders. Proven on The House On Ash Tree Lane (Unity 2021.1.11f1).",
+ "author": {
+  "name": "Fabrizio"
+ }
+}
