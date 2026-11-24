@@ -54,3 +54,20 @@ do long asset-analysis before writing files — don't assume stalled; check pane
   ~20 MB for fidelity. Final .app ~116–136 MB vs Unity 855 MB.
 - Run: open the .app; WASD/mouse, E interact; F1 none/F2 bloom/F3 kuwahara/F4 pixelart/F5 dog/F6 vignette.
 - CLI stills: `--scene 0/1/2 --postfx X --frames N --screenshot out.png [--send-key e:5]`.
+
+## Controller & QoL (SDL3)
+- **Init**: `SDL_INIT_VIDEO|AUDIO|JOYSTICK|GAMEPAD` (+EVENTS implied by VIDEO). Set hints BEFORE
+  SDL_Init: `SDL_JOYSTICK_HIDAPI=1`, `HIDAPI_PS4=1`, `HIDAPI_PS5=1`, **`HIDAPI_SWITCH=0`** (the Switch
+  driver hijacks PS4 pads and fails calibration), `ALLOW_BACKGROUND_EVENTS=1`.
+- **Bundle the CURRENT SDL3**: NuGet/publish may ship a stale native libSDL3 lacking HIDAPI PS4;
+  build script must copy the homebrew `libSDL3.0.dylib` into the .app.
+- **Poll axes, don't trust axis events**: BT PS4 on macOS goes through Apple MFi; SDL3-CS
+  `SDL_EVENT_GAMEPAD_AXIS_MOTION` marshaling is unreliable. Poll `SDL_GetGamepadAxis` (and raw
+  `SDL_GetJoystickAxis` fallback) each frame; left stick→Horizontal/Vertical, right stick→Mouse X/Y.
+- Mapping: left stick move, right stick look, A=jump/space, X=E interact, D-pad=WASD fallback,
+  Start=pause menu. Radial deadzone ~0.18.
+- **Resolution config**: CLI --width/--height/--fullscreen + UserSettings JSON persist + runtime
+  swapchain recreate (retain GPU resources). **Pause menu**: Esc/Start, Time.timeScale=0, overlay via
+  the UI quad/FontAtlas pipeline; navigate keyboard/gamepad/mouse.
+- Verify with a SDL virtual gamepad (`--test-gamepad`): assert left stick feeds GetAxis, right stick
+  rotates yaw, buttons map, Start pauses, raw-joystick fallback works.
