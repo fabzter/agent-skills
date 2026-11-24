@@ -70,3 +70,29 @@ export WINEPREFIX="$PWD/.wineprefix" WINEARCH=win64 WINEDEBUG=-all   # prefix un
 - Screenshotting a backgrounded CrossOver window often fails (`px_capture_unavailable` / it pauses
   rendering when occluded). Capture right after launch while frontmost, or rely on the Player.log gate.
 - Keep all artifacts (prefix, tools) bounded to the project dir; no system-wide Unity install.
+
+## Cross-platform builds (Win/macOS/Linux) WITHOUT the editor (verified 2026-11-23)
+The lib-only DLL swap extends to all 3 platforms by pairing the rebuilt managed DLL + the game's
+version-matched `_Data` with each platform's **standalone player runtime**, downloaded from Unity's
+archive "Support for Editor" modules (no editor install). Changeset comes from `globalgamemanagers`.
+- **URLs** (`download.unity3d.com/download_unity/<changeset>/`): Mac = `MacEditorTargetInstaller/
+  UnitySetup-Mac-Mono-Support-for-Editor-<ver>.pkg`; Linux Mono = `TargetSupportInstaller/
+  UnitySetup-Linux-Mono-Support-for-Editor-<ver>.exe` (Windows-hosted). The Hub prod feed and the
+  falldamagestudio index lack legacy versions; probe URLs with `curl -sI` (a 39-byte body = 404).
+- **Windows** player = the original build itself (no download). **Mac** pkg → `pkgutil --expand-full`
+  → `Variations/macos_arm64_nondevelopment_mono/UnityPlayer.app` (native arm64!). **Linux** exe is
+  Unity's modified NSIS that **7zz AND libarchive/bsdtar cannot parse**: carve at magic
+  `EF BE AD DE "NullsoftInst"`, decode the solid-LZMA header (props 0x5D, dict 8MB, stream at +45),
+  then parse file-data blocks (4-byte size, high bit = LZMA-compressed, 5-byte props header).
+- **Layout gotchas**: Mac mono config at `Contents/MonoBleedingEdge/etc` (NOT Frameworks — breaks
+  `codesign --deep`); rename launcher to product name + generate Info.plist + ad-hoc codesign.
+  Linux mono runtime at `<Game>_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so` (+libMonoPosixHelper),
+  config at `<Game>_Data/MonoBleedingEdge/etc` (NOT build root like Windows).
+- **Gate per platform** = Player.log `Initialize engine version` + `MonoManager ReloadAssembly ...
+  Completed reload`. Mac/Linux verify headless via `-batchmode -nographics` (Null device shader
+  errors are expected). Linux runs in an x86_64 glibc container (ubuntu, NOT alpine/musl).
+- **Environmental, NOT build defects**: (1) Unity 2021.1 Mac player's Cocoa
+  `applicationDidFinishLaunching` never fires on **macOS 27** — the BARE template stalls identically
+  (idle `NSApplicationMain`, diagnose with `sample`); batchmode inits fine, windowed works on macOS ≤12.
+  (2) Linux under **qemu** amd64-on-arm64 hits a Mono JIT `tramp-amd64.c` assert after reload; runs on
+  real x86_64 hardware.
