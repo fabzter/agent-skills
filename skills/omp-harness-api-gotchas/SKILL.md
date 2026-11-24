@@ -26,3 +26,11 @@ These are correct calls with wrong API usage — not model emission or parser re
 
 ## bash `UID` is readonly
 - `UID=...` fails: `UID: readonly variable`. Use another name (e.g. `UPID`).
+
+## `manage_skill` refuses symlink write-through
+- A `managed-skills/<name>` entry that is a **symlink** into another dir (e.g. the skills repo)
+  is readable live, but `manage_skill` update refuses:
+  `resolves through a symlink; refusing to write outside the managed directory`.
+- **Repo-backed managed skills:** symlink `managed-skills/<name>` → repo `skills/<name>` for live
+  read/visibility, then **edit the repo file directly with `edit`/`write` + git commit/push**
+  (not `manage_skill`). Repo stays the single source of truth; other agents install snapshots.
