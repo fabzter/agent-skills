@@ -109,6 +109,24 @@
       },
       "category": "productivity",
       "source": "./plugins/itch-io-download"
+    },
+    {
+      "name": "unity-mono-lib-only-recomp",
+      "description": "Decompile and recompile a Unity Mono game's Assembly-CSharp.dll against the shipped managed libraries into a functionally identical program, no Unity editor; includes macOS CrossOver launch verification.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "debugging",
+      "source": "./plugins/unity-mono-lib-only-recomp"
+    },
+    {
+      "name": "omp-harness-api-gotchas",
+      "description": "Verified OMP/bash API semantics that cause failed tool calls: task tools field expects eval tools, commit namespace is cwd-bound, bash UID is readonly.",
+      "author": {
+        "name": "Fabrizio"
+      },
+      "category": "debugging",
+      "source": "./plugins/omp-harness-api-gotchas"
     }
   ]
 }

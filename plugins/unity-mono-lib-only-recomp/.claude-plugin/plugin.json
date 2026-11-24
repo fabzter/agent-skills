@@ -1,0 +1,7 @@
+{
+  "name": "unity-mono-lib-only-recomp",
+  "description": "Decompile and recompile a Unity Mono game's Assembly-CSharp.dll against the shipped managed libraries into a functionally identical program, no Unity editor; includes macOS CrossOver launch verification.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}

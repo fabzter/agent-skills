@@ -1,0 +1,7 @@
+{
+  "name": "omp-harness-api-gotchas",
+  "description": "Verified OMP/bash API semantics that cause failed tool calls: task tools field expects eval tools, commit namespace is cwd-bound, bash UID is readonly.",
+  "author": {
+    "name": "Fabrizio"
+  }
+}
