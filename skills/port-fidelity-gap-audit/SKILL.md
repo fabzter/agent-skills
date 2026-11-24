@@ -30,9 +30,10 @@ texture double-flip; static-batch world-space verts; UI reference-resolution sca
   normals/tangents, scale, winding.
 - **UI**: canvas scaler mode + reference resolution + match, font atlas, alignment, text layout.
 - **Audio**: clip set, volumes, spatialization, looping, mixing.
-- **Input/physics**: trigger/raycast behavior, movement/look feel, cursor lock, gravity/jump.
-- **Scene flow**: load order, transitions, fades, timing, coroutine/lifecycle order
-  (Awake/Start/OnEnable/Update/FixedUpdate/LateUpdate).
+- **Geometry**: static batching (baked world-space verts → model=identity, draw submesh range),
+  normals/tangents, scale, winding. **Low-poly facet clarity**: keep FLAT/per-face normals (don't
+  average/smooth on extraction) so faceted foliage reads as low-poly; smooth normals make it look
+  blobby. Pair with crisp (point/nearest, no over-blur mipmaps) filtering for tiny palette textures.
 - **Platform/launch**: Mac MainMenu.nib + NSPrincipalClass=PlayerApplication + NSMainNibFile; mono
   runtime layout per platform; codesign; graphics-API declaration (globalgamemanagers).
 
